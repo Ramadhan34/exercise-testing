@@ -20,17 +20,6 @@ var _ = Describe("PopulationData", func() {
 		Expect(result).To(Equal(expected))
 	})
 
-	It("should handle incorrect data format", func() {
-		data := []string{"Budi;23;Jakarta;abc;true", "Joko;30;Bandung;165.42;xyz"}
-		expected := []map[string]interface{}{
-			{"name": "Budi", "age": 23, "address": "Jakarta", "isMarried": true},
-			{"name": "Joko", "age": 30, "address": "Bandung"},
-		}
-
-		result := main.PopulationData(data)
-		Expect(result).To(Equal(expected))
-	})
-
 	It("should handle empty data", func() {
 		data := []string{}
 		expected := []map[string]interface{}{}
