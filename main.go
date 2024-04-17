@@ -22,13 +22,17 @@ func PopulationData(data []string) []map[string]interface{} { // Function mengub
 		person["address"] = tokens[2]
 
 		if tokens[3] != "" { // Jika ada data tinggi badan
-			height, _ := strconv.ParseFloat(tokens[3], 64)
-			person["height"] = height
+			height, err := strconv.ParseFloat(tokens[3], 64)
+			if err == nil {
+				person["height"] = height
+			}
 		}
 
 		if tokens[4] != "" { // Jika ada data status pernikahan
-			isMarried, _ := strconv.ParseBool(tokens[4])
-			person["isMarried"] = isMarried
+			isMarried, err := strconv.ParseBool(tokens[4])
+			if err == nil {
+				person["isMarried"] = isMarried
+			}
 		}
 
 		// Menambahkan data penduduk yang telah diubah ke dalam slice of map
